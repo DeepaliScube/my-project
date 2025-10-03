@@ -35,4 +35,7 @@
         <button type="submit" class="btn btn-primary">Register</button>
     </div>
 </form>
+<div class="d-grid mb-10">
+   <a href="{{ route('login') }}">Already have an account</a>
+</div>
 @endsection

@@ -1,6 +1,5 @@
 @extends('layouts.auth')
 @section('title', 'Login')
-
 @section('content')
 <form method="POST" action="{{ route('login') }}">
     @csrf
@@ -40,4 +39,8 @@
         <button type="submit" class="btn btn-primary">Sign In</button>
     </div>
 </form>
+
+<div class="d-grid mb-10">
+   <a href="{{ route('register') }}">Don't have an account</a>
+</div>
 @endsection

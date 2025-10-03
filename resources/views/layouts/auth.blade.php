@@ -21,7 +21,7 @@
                  style="background-image: url('{{ asset('assets/media/misc/auth-bg.png') }}')">
                 <div class="d-flex flex-column flex-center p-6 p-lg-10 w-100">
                     <a href="{{ url('/') }}">
-                        <img alt="Logo" src="{{ asset('assets/media/logos/default.svg') }}" class="h-40px mb-5"/>
+                        {{-- <img alt="Logo" src="{{ asset('assets/media/logos/default.svg') }}" class="h-40px mb-5"/> --}}
                     </a>
                     <h1 class="text-white fs-2qx fw-bold text-center mb-7">ERP System</h1>
                 </div>
