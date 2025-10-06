@@ -1643,7 +1643,7 @@
        <!--End of Chat Drawer-->
        <!-- End of Chat -->
        <!-- Apps -->
-       <div data-kt-dropdown="true" data-kt-dropdown-offset="10px, 10px" data-kt-dropdown-offset-rtl="-10px, 10px" data-kt-dropdown-placement="bottom-end" data-kt-dropdown-placement-rtl="bottom-start">
+       {{-- <div data-kt-dropdown="true" data-kt-dropdown-offset="10px, 10px" data-kt-dropdown-offset-rtl="-10px, 10px" data-kt-dropdown-placement="bottom-end" data-kt-dropdown-placement-rtl="bottom-start">
         <button class="kt-btn kt-btn-ghost kt-btn-icon size-9 rounded-full hover:bg-primary/10 hover:[&_i]:text-primary kt-dropdown-open:bg-primary/10 kt-dropdown-open:[&_i]:text-primary" data-kt-dropdown-toggle="true">
          <i class="ki-filled ki-element-11 text-lg">
          </i>
@@ -1757,7 +1757,7 @@
           </a>
          </div>
         </div>
-       </div>
+       </div> --}}
        <!-- End of Apps -->
        <!-- User -->
        <div class="shrink-0" data-kt-dropdown="true" data-kt-dropdown-offset="10px, 10px" data-kt-dropdown-offset-rtl="-20px, 10px" data-kt-dropdown-placement="bottom-end" data-kt-dropdown-placement-rtl="bottom-start" data-kt-dropdown-trigger="click">
@@ -1768,17 +1768,43 @@
          <div class="flex items-center justify-between px-2.5 py-1.5 gap-1.5">
           <div class="flex items-center gap-2">
            <img alt="" class="size-9 shrink-0 rounded-full border-2 border-green-500" src="assets/media/avatars/300-2.png"/>
-           <div class="flex flex-col gap-1.5">
+           {{-- <div class="flex flex-col gap-1.5">
             <span class="text-sm text-foreground font-semibold leading-none">
-             Cody Fisher
+            @if (Auth::check())
+               {{ Auth::user()->name }}
+            @else
+                User ID: {{ Auth::id() }}
+            @endif
             </span>
             <a class="text-xs text-secondary-foreground hover:text-primary font-medium leading-none" href="#">
-             c.fisher@gmail.com
+            @if (Auth::check())
+               {{ Auth::user()->email }}
+            @else
+                User ID: {{ Auth::id() }}
+            @endif
             </a>
-           </div>
+           </div> --}}
+           <div class="flex flex-col gap-1.5">
+                <span class="text-sm text-foreground font-semibold leading-none">
+                    @auth
+                        {{ Auth::user()->name ?? 'No Name' }}
+                    @else
+                        User ID: {{ Auth::id() ?? 'N/A' }}
+                    @endauth
+                </span>
+
+                <a class="text-xs text-secondary-foreground hover:text-primary font-medium leading-none" href="@auth mailto:{{ Auth::user()->email ?? '' }} @endauth">
+                    @auth
+                        {{ Auth::user()->email ?? 'No Email' }}
+                    @else
+                        User ID: {{ Auth::id() ?? 'N/A' }}
+                    @endauth
+                </a>
+            </div>
+
           </div>
           <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline">
-           Pro
+           Role: Admin Static
           </span>
          </div>
          <ul class="kt-dropdown-menu-sub">
@@ -1786,13 +1812,13 @@
            <div class="kt-dropdown-menu-separator">
            </div>
           </li>
-          <li>
+          {{-- <li>
            <a class="kt-dropdown-menu-link" href="#">
             <i class="ki-filled ki-badge">
             </i>
             Public Profile
            </a>
-          </li>
+          </li> --}}
           <li>
            <a class="kt-dropdown-menu-link" href="#">
             <i class="ki-filled ki-profile-circle">
@@ -1800,7 +1826,7 @@
             My Profile
            </a>
           </li>
-          <li data-kt-dropdown="true" data-kt-dropdown-placement="right-start" data-kt-dropdown-trigger="hover">
+          {{-- <li data-kt-dropdown="true" data-kt-dropdown-placement="right-start" data-kt-dropdown-trigger="hover">
            <button class="kt-dropdown-menu-toggle" data-kt-dropdown-toggle="true">
             <i class="ki-filled ki-setting-2">
             </i>
@@ -1879,15 +1905,15 @@
              </li>
             </ul>
            </div>
-          </li>
-          <li>
+          </li> --}}
+          {{-- <li>
            <a class="kt-dropdown-menu-link" href="https://devs.keenthemes.com">
             <i class="ki-filled ki-message-programming">
             </i>
             Dev Forum
            </a>
-          </li>
-          <li data-kt-dropdown="true" data-kt-dropdown-placement="right-start" data-kt-dropdown-trigger="hover">
+          </li> --}}
+          {{-- <li data-kt-dropdown="true" data-kt-dropdown-placement="right-start" data-kt-dropdown-trigger="hover">
            <button class="kt-dropdown-menu-toggle py-1" data-kt-dropdown-toggle="true">
             <span class="flex items-center gap-2">
              <i class="ki-filled ki-icon">
@@ -1956,26 +1982,29 @@
             </ul>
            </div>
           </li>
-          <li>
-           <div class="kt-dropdown-menu-separator">
-           </div>
+          <li> --}}
+           <div class="kt-dropdown-menu-separator"></div>
           </li>
          </ul>
-         <div class="px-2.5 pt-1.5 mb-2.5 flex flex-col gap-3.5">
-          <div class="flex items-center gap-2 justify-between">
-           <span class="flex items-center gap-2">
-            <i class="ki-filled ki-moon text-base text-muted-foreground">
-            </i>
-            <span class="font-medium text-2sm">
-             Dark Mode
+            <div class="px-2.5 pt-1.5 mb-2.5 flex flex-col gap-3.5">
+            {{-- <div class="flex items-center gap-2 justify-between">
+            <span class="flex items-center gap-2">
+                <i class="ki-filled ki-moon text-base text-muted-foreground">
+                </i>
+                <span class="font-medium text-2sm">
+                Dark Mode
+                </span>
             </span>
-           </span>
-           <input class="kt-switch" data-kt-theme-switch-state="dark" data-kt-theme-switch-toggle="true" name="check" type="checkbox" value="1"/>
-          </div>
-          <a class="kt-btn kt-btn-outline justify-center w-full" href="#">
-           Log out
-          </a>
-         </div>
+            <input class="kt-switch" data-kt-theme-switch-state="dark" data-kt-theme-switch-toggle="true" name="check" type="checkbox" value="1"/>
+            </div> --}}
+            {{-- <a class="kt-btn kt-btn-outline justify-center w-full" href="#">
+            Log out
+            </a> --}}
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="kt-btn kt-btn-outline justify-center w-full">Logout</button>
+                </form>
+            </div>
         </div>
        </div>
        <!-- End of User -->
