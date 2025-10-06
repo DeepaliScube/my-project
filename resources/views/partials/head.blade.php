@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8"/>
-    <title>@yield('title', 'ERP')</title>
+    <title>{{ config('app.name') }} | @yield('title', 'Home')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
