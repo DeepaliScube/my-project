@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>@yield('title', 'Auth') | ERP</title>
+    <title>{{ config('app.name') }} | @yield('title', 'Auth')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="assets/media/app/DIPL-Logo.png" rel="icon" type="image/png"/>
 
     <!-- Metronic Assets -->
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>

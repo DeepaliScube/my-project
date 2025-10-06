@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return view('auth.login');
-    // return view('auth.register');
 })->name('login');
+
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
@@ -34,3 +34,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::post('/auto-logout', function () {
+    if (Auth::check()) {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+    }
+    return response()->json(['status' => 'logged_out']);
+})->name('auto.logout');

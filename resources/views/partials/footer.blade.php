@@ -1,11 +1,40 @@
-<div id="kt_footer" class="footer py-4 d-flex flex-lg-column">
-    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
-        <div class="text-dark order-2 order-md-1">
-            <span class="text-muted fw-bold me-2">{{ date('Y') }} © ERP System</span>
+<footer class="kt-footer">
+        <!-- Container -->
+        <div class="kt-container-fixed">
+                <div
+                        class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 py-5">
+                        <div class="flex order-2 md:order-1 gap-2 font-normal text-sm">
+                                <span class="text-secondary-foreground">
+                                        {{ date('Y') }} ©
+                                </span>
+                                <a class="text-secondary-foreground hover:text-primary"
+                                        href="https://keenthemes.com">
+                                        DIPLERP
+                                </a>
+                        </div>
+                        <nav class="flex order-1 md:order-2 gap-4 font-normal text-sm text-secondary-foreground">
+                                {{-- <a class="hover:text-primary"
+                                        href="https://keenthemes.com/metronic/tailwind/docs">
+                                        Docs
+                                </a>
+                                <a class="hover:text-primary"
+                                        href="https://1.envato.market/Vm7VRE">
+                                        Purchase
+                                </a>
+                                <a class="hover:text-primary"
+                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                        FAQ
+                                </a>
+                                <a class="hover:text-primary"
+                                        href="https://devs.keenthemes.com">
+                                        Support
+                                </a>
+                                <a class="hover:text-primary"
+                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                        License
+                                </a> --}}
+                        </nav>
+                </div>
         </div>
-        <div class="nav nav-dark">
-            <a href="#" class="nav-link px-3">About</a>
-            <a href="#" class="nav-link px-3">Support</a>
-        </div>
-    </div>
-</div>
+        <!-- End of Container -->
+</footer>
